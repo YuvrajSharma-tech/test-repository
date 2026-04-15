@@ -1,0 +1,127 @@
+:root {
+  --primary-neon: #00f2ff;
+  --secondary-neon: #7000ff;
+  --success-neon: #39ff14; /* Neon Green */
+  --danger-neon: #ff003c;  /* Neon Red */
+  --bg-dark: #050505;
+  --glass-bg: rgba(255, 255, 255, 0.05);
+}
+
+body {
+  background: radial-gradient(circle at center, #1a1a2e 0%, #050505 100%);
+  color: white;
+  font-family: 'Orbitron', sans-serif; /* Futuristic font */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+  overflow: hidden;
+}
+
+/* Futuristic Container */
+.container {
+  background: var(--glass-bg);
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  padding: 40px;
+  box-shadow: 0 0 50px rgba(0, 242, 255, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Animated Border Effect */
+.container::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 2px;
+  background: linear-gradient(90deg, transparent, var(--primary-neon), transparent);
+  animation: moveLine 3s linear infinite;
+}
+
+@keyframes moveLine {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+h1 {
+  text-transform: uppercase;
+  letter-spacing: 5px;
+  text-shadow: 0 0 10px var(--primary-neon);
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+/* Inputs & Buttons */
+input {
+  background: rgba(0, 0, 0, 0.5);
+  border: 1px solid var(--secondary-neon);
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+  outline: none;
+  transition: 0.3s;
+}
+
+input:focus {
+  box-shadow: 0 0 15px var(--secondary-neon);
+}
+
+button {
+  background: var(--secondary-neon);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-weight: bold;
+  text-transform: uppercase;
+  clip-path: polygon(10% 0, 100% 0, 90% 100%, 0% 100%); /* Futuristic shape */
+  transition: 0.3s;
+}
+
+button:hover {
+  background: var(--primary-neon);
+  box-shadow: 0 0 20px var(--primary-neon);
+  color: black;
+}
+
+/* --- UPDATED: Table Styling & Spacing --- */
+.score-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  margin-bottom: 12px; /* THIS ADDS THE SPACING BETWEEN NAMES */
+  background: rgba(255, 255, 255, 0.02); /* Slight background to make it a distinct card */
+  border: 1px solid rgba(255, 255, 255, 0.05); /* Full border instead of just bottom */
+  border-radius: 8px; /* Rounded corners */
+  transition: 0.3s;
+}
+
+/* Removes the margin from the very last row so it fits perfectly */
+.score-row:last-child {
+  margin-bottom: 0;
+}
+
+.score-row:hover {
+  background: rgba(255, 255, 255, 0.08);
+  transform: scale(1.02);
+  border-color: var(--secondary-neon); /* Adds a purple glow to the border on hover */
+  box-shadow: 0 0 15px rgba(112, 0, 255, 0.3);
+}
+
+/* --- UPDATED: Pass / Fail Colors --- */
+.status-pass { 
+  color: var(--success-neon); 
+  font-weight: bold;
+  letter-spacing: 2px;
+  text-shadow: 0 0 10px var(--success-neon); /* Stronger Green Glow */
+}
+
+.status-fail { 
+  color: var(--danger-neon); 
+  font-weight: bold;
+  letter-spacing: 2px;
+  text-shadow: 0 0 10px var(--danger-neon); /* Stronger Red Glow */
+}
